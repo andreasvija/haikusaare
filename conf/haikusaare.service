@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=andreas
 Group=www-data
-WorkingDirectory=/home/andreas/haikusaare-temp/
+WorkingDirectory=/home/andreas/haikusaare/
 Environment="PATH=/home/andreas/anaconda3/envs/haikuenv/bin"
 ExecStart=/home/andreas/anaconda3/envs/haikuenv/bin/uwsgi --ini haikusaare.ini
 

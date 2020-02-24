@@ -4,6 +4,6 @@ server {
 
     location / {
         include uwsgi_params;
-        uwsgi_pass unix:/home/andreas/haikusaare-temp/haikusaare.sock;
+        uwsgi_pass unix:/home/andreas/haikusaare/conf/haikusaare.sock;
     }
 }
