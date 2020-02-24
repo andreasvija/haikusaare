@@ -1,0 +1,28 @@
+keerulised täiendused:
+
+lemmade kasutus, nt käänata verbi kui eelmine sõna oli nimisõna? (liiga palju eri variante)
+liitsõna osa lemma matchimine? (ei ole otseselt lihtsam kui eelmine)
+muu tekstikorpus alla, tammsaare mitu korda peale? (liiga suur markovi mudel, äkki optimiseerimine teeb võimalikuks)
+
+väiksed head parandused:
+
+truecase corpus? - ": «Löö" lahendamata mõnel juhul
+parem insp kasutus? - kuidas lollikindlalt? -
+rohkem teoseid? + 
+valida ainult topi seast? - nõuab kas lisaarvutusi või conddist mudelit
+w->v / truew? +
+
+refactor, rohkem funktsioone? +
+optimiseerimine, nt tehete vektoriseerimine, kui eelmine sõna tuli 2gram pealt siis vaadata max 3? +
+
+teisiti:
+
+leia n-silbilised read otse tekstist? - tuleks lamp
+määrata lausestruktuur sõnatüüpidega? - liiga palju tüüpe et huvitav oleks
+char-RNN? (muude korpustega) - kuidas silbid?
+
+esitlus:
+
+lihtsalt genereeri teksti? (tõde ja õigus 6: 2 tõde 4 õigus/electric boogaloo)
+veebirakendus?
+kõnesüntees?

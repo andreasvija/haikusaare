@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    server_name vija.ee www.vija.ee;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/home/andreas/haikusaare-temp/haikusaare.sock;
+    }
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve haikusaare
+After=network.target
+
+[Service]
+User=andreas
+Group=www-data
+WorkingDirectory=/home/andreas/haikusaare-temp/
+Environment="PATH=/home/andreas/anaconda3/envs/haikuenv/bin"
+ExecStart=/home/andreas/anaconda3/envs/haikuenv/bin/uwsgi --ini haikusaare.ini
+
+[Install]
+WantedBy=multi-user.target
