@@ -23,18 +23,12 @@ ngram_sizes = [7, 6, 5, 4, 3, 2] # unique ngram sizes (>=2) in use order, must e
 sets_path = "cache/sets.p"
 subsets_path = "cache/subsets.p"
 
-begin_timestamp = None
-
 def start_time():
-    global begin_timestamp
-    begin_timestamp = time.time()
+    return time.time()
 
-def stop_time(name):
-    global begin_timestamp
-    assert begin_timestamp is not None, "start_time() not called before stop_time()"
+def stop_time(start, name):
 
-    delta = time.time() - begin_timestamp
-    begin_timestamp = None
+    delta = time.time() - start
     print(name + ': ' + str(round(delta, 2)) + 's')
 
 # seed(123)
@@ -44,7 +38,7 @@ def stop_time(name):
 class Haikusaare:
 
     def __init__(self, corpus_path='corpus/'):
-        start_time()
+        start = start_time()
         generate_subsets = True
 
         if isfile(sets_path):
@@ -65,12 +59,12 @@ class Haikusaare:
             self.subsets_of_ngrams = get_ngrams_subsets(self.sets_of_ngrams)
             dump(self.subsets_of_ngrams, open(subsets_path, 'wb'))
 
-        stop_time('mudel')
+        stop_time(start, 'mudel')
 
     def generate_haiku(self, insp):
-        start_time()
+        start = start_time()
         response = generate_haiku(self.subsets_of_ngrams, insp)
-        stop_time('haiku')
+        stop_time(start, 'haiku')
         return response
 
 # init

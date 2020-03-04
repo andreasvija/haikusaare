@@ -1,13 +1,16 @@
 const inspirations = ["talu", "mees", "perenaine", "kala", "mets", "hobune", "aeg"];
 function setRandomInsp() {
-    const insp = inspirations[Math.floor(Math.random() * inspirations.length)];
-    document.getElementById("insp").value = insp;
+    document.getElementById("insp").value = inspirations[Math.floor(Math.random() * inspirations.length)];
 }
 
-function sendHaikuRequest() {
-    document.getElementById("haiku1").innerHTML = "_____";
-    document.getElementById("haiku2").innerHTML = "_______";
-    document.getElementById("haiku3").innerHTML = "_____";
+function sendHaikuRequests() {
+    for (let i = 1; i < 4; i++) {
+        for (let j = 1; j < 4; j++) {
+            const id = "haiku" + i.toString() + "line" + j.toString();
+            document.getElementById(id).innerHTML = "_____";
+            if (j === 2) document.getElementById(id).innerHTML += "__";
+        }
+    }
 
     let insp = document.getElementById("insp").value;
     if (insp.length > 200) {
@@ -15,26 +18,31 @@ function sendHaikuRequest() {
     }
     insp = insp.trim();
 
-    const request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            if (this.status === 200) {
-                const lines = this.responseText.split("\n");
-                document.getElementById("haiku1").innerHTML = lines[0];
-                document.getElementById("haiku2").innerHTML = lines[1];
-                document.getElementById("haiku3").innerHTML = lines[2];
+    for (let i = 1; i < 4; i++) {
+        const request = new XMLHttpRequest();
+
+        request.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+
+                    const lines = this.responseText.split("\n");
+                    for (let j = 1; j < 4; j++) {
+                        document.getElementById("haiku" + i.toString() + "line" + j.toString()).innerHTML = lines[j-1];
+                    }
+
+                }
+                else {
+                    console.log("status", this.status, "insp", insp)
+                }
             }
-            else {
-                console.log("status", this.status, "insp", insp)
-            }
-        }
-    };
-    request.open("GET", "/haikusaare/haiku?insp="+insp, true);
-    request.send();
+        };
+        request.open("GET", "/haikusaare/haiku?insp="+insp, true);
+        request.send();
+    }
 }
 
 window.addEventListener("DOMContentLoaded", function() {
     setRandomInsp();
     document.getElementById("insp_button").addEventListener("click", setRandomInsp);
-    document.getElementById("haiku_button").addEventListener("click", sendHaikuRequest);
+    document.getElementById("haiku_button").addEventListener("click", sendHaikuRequests);
 }, false);

@@ -1,34 +1,46 @@
+html {
+    min-height: 100%;
+}
 body {
+    min-height: 100%;
     font-family: Verdana, Arial, sans-serif;
+    background-image: url("/front/background.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 100%;
 }
 h1 {
-    font-size: 30px;
+    font-size: 34px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     font-family: Georgia, Times, serif;
 }
 #frame {
-    font-size: 16px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    font-size: 18px;
     text-align: center;
-    margin: 60px;
 }
-input[type="text"] {
-    font-size: 14px;
-    font-family: Verdana, Arial, sans-serif;
-}
-button {
-    font-size: 14px;
+input[type="text"], button {
+    font-size: 16px;
     font-family: Verdana, Arial, sans-serif;
 }
 .input_row {
     margin: 15px;
 }
-#haiku {
-    margin-top: 70px;
+#haikus {
+    margin-top: 80px;
+    text-align: center;
     font-size: 24px;
     font-family: Georgia, Times, serif;
 }
-#haiku p {
+.haiku {
+    width: 32%;
+    display: inline-block;
+}
+.haiku p {
     margin-top: 20px;
     margin-bottom: 20px;
 }
