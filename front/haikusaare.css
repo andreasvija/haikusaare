@@ -4,10 +4,18 @@ html {
 body {
     min-height: 100%;
     font-family: Verdana, Arial, sans-serif;
+    font-size: 18px;
+    text-align: center;
     background-image: url("/front/background.png");
     background-repeat: no-repeat;
     background-position: left center;
     background-size: auto 100%;
+}
+#source_link {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 14px;
 }
 h1 {
     font-size: 34px;
@@ -20,8 +28,6 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 70px;
-    font-size: 18px;
-    text-align: center;
 }
 input[type="text"], button {
     font-size: 16px;

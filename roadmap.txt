@@ -20,9 +20,3 @@ teisiti:
 leia n-silbilised read otse tekstist? - tuleks lamp
 määrata lausestruktuur sõnatüüpidega? - liiga palju tüüpe et huvitav oleks
 char-RNN? (muude korpustega) - kuidas silbid?
-
-esitlus:
-
-lihtsalt genereeri teksti? (tõde ja õigus 6: 2 tõde 4 õigus/electric boogaloo)
-veebirakendus?
-kõnesüntees?
