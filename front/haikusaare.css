@@ -107,6 +107,11 @@ input[type="text"], button {
         width: 45%;
     }
 }
+@media screen and (max-width: 650px) {
+    .best_haiku {
+        width: 75%;
+    }
+}
 .best_haiku p {
     margin-top: 20px;
     margin-bottom: 20px;
