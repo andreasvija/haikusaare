@@ -1,0 +1,66 @@
+Create droplet
+Update droplet IP in DNS records
+Add firewall to droplet
+Change IP in putty
+Set username to root in putty
+
+passwd
+
+adduser andreas
+
+usermod -aG sudo andreas
+rsync --archive --chown=andreas:andreas ~/.ssh /home/andreas
+
+Set username to andreas in putty
+
+sudo apt-get update
+sudo apt install git
+
+git config --global user.email "E-MAIL OMITTED"
+
+git config --global user.name "Andreas Vija"
+curl https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -o /tmp/anaconda.sh
+bash /tmp/anaconda.sh
+
+source ~/.bashrc
+conda config --set auto_activate_base false
+conda deactivate
+conda create --name haikuenv python=3.6.10
+
+conda activate haikuenv
+conda install -c estnltk -c conda-forge estnltk
+
+conda install flask
+
+conda install -c conda-forge uwsgi
+
+git clone https://github.com/andreasvija/haikusaare.git
+cd haikusaare
+mkdir cache
+python interface.py 
+
+echo 0.0.0.0 >> conf/hostname
+sudo apt update
+sudo apt install nginx
+
+systemctl status nginx
+
+sudo cp conf/haikusaare.service /etc/systemd/system/haikusaare.service
+chmod o+rx ~/anaconda3/envs/haikuenv/bin
+chmod o+rx ~/anaconda3/envs/haikuenv/bin/uwsgi
+sudo systemctl start haikusaare
+sudo systemctl enable haikusaare
+sudo systemctl status haikusaare
+
+sudo cp conf/haikusaare_nginx_conf /etc/nginx/sites-available/haikusaare_nginx_conf
+sudo ln -s /etc/nginx/sites-available/haikusaare_nginx_conf /etc/nginx/sites-enabled
+sudo nginx -t
+
+sudo systemctl restart nginx
+sudo systemctl status nginx
+
+
+
+Et teha restart:
+sudo systemctl restart haikusaare
+(oota 3 min)

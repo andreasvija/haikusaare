@@ -1,6 +1,6 @@
 # Haikusaare web server
 
-from flask import Flask, request, abort, send_from_directory
+from flask import Flask, request, abort, send_from_directory, render_template_string
 from haikusaare import Haikusaare
 from os.path import isfile
 
@@ -9,13 +9,16 @@ generator = Haikusaare()
 
 def from_file(filename):
     with open(filename, encoding='utf-8') as file:
-        page = file.read()
-    return page
+        contents = file.read()
+    return contents
 
 main_page = from_file('front/main.html')
 haikusaare_page = from_file('front/haikusaare.html')
+haikusaare_parimad_page = from_file('front/parimad.html')
 
 hostname = from_file('conf/hostname').strip()
+besthaikus = [[line.strip() for line in haiku.strip().split('\n')]
+              for haiku in from_file('pearls.txt').strip().split('#')]
 
 @app.route('/')
 @app.route('/index.html')
@@ -33,12 +36,16 @@ def send_file(filename):
 def haikusaare_page_address():
     return haikusaare_page
 
+@app.route('/haikusaare/parimad')
+def haikusaare_parimad_page_address():
+    return render_template_string(haikusaare_parimad_page, haikus=besthaikus)
+
 @app.route('/haikusaare/haiku')
 def get_haiku():
     if 'insp' in request.args:
         return generator.generate_haiku(request.args['insp'])
     else:
-        return 'Faulty GET request.'
+        return generator.generate_haiku('')
 
 if __name__ == '__main__':
     app.run(host=hostname)

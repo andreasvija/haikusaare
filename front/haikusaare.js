@@ -1,4 +1,4 @@
-const inspirations = ["talu", "mees", "perenaine", "kala", "mets", "hobune", "aeg"];
+const inspirations = ['talu', 'mees', 'perenaine', 'kala', 'mets', 'hobune', 'aeg', 'leib', 'linn', 'kool', 'maja', 'laps'];
 function setRandomInsp() {
     document.getElementById("insp").value = inspirations[Math.floor(Math.random() * inspirations.length)];
 }

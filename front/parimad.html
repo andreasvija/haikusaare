@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon' type='image/x-icon' href='/front/favicon.ico'/>
+    <title>Haikusaare parimad palad</title>
+    <link rel="stylesheet" href="/front/haikusaare.css">
+    <script type="text/javascript" src="/front/haikusaare.js"></script>
+</head>
+<body>
+    <div id="corner_links">
+        <a href="/haikusaare">Haikusaare</a>
+        <a href="https://github.com/andreasvija/haikusaare">Lähtekood</a>
+    </div>
+
+    <h1>Haikusaare parimad palad</h1>
+    <div id="frame">
+
+        <div id="haikus">
+            {% for haiku in haikus %}
+            <div class="best_haiku">
+                {% for line in haiku %}
+                <p>{{ line }}</p>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+</html>

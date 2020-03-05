@@ -16,7 +16,7 @@ from os.path import isfile
 from re import compile, split
 
 ROWS = [5, 7, 5]
-random_inspirations = ['talu', 'mees', 'perenaine', 'kala', 'mets', 'hobune', 'aeg']
+random_inspirations = ['talu', 'mees', 'perenaine', 'kala', 'mets', 'hobune', 'aeg', 'leib', 'linn', 'kool', 'maja', 'laps']
 word_replacements = ['ja', 'et', 'kui', 'või', 'on', 'nii', 'ent',
                      'aga', 'tema', 'meie', 'ilma', 'mõtleks'] # must contain a 1-syllable word
 ngram_sizes = [7, 6, 5, 4, 3, 2] # unique ngram sizes (>=2) in use order, must end with 2
@@ -31,9 +31,7 @@ def stop_time(start, name):
     delta = time.time() - start
     print(name + ': ' + str(round(delta, 2)) + 's')
 
-# seed(123)
-
-# TODO /favicon.ico
+#seed(123)
 
 class Haikusaare:
 
@@ -273,7 +271,7 @@ def get_next_word(subsets_of_ngrams, previous_words, syllables_left, last_used_g
         #filtered_matches = [match for match in matches if word_is_good(match, bigram_subsets[match[0]], syllables_left)]
 
         if len(filtered_matches) != 0:
-            return choice(filtered_matches), ngram_size # TODO: make it more popularity based
+            return choice(filtered_matches), ngram_size # TODO: make it more popularity based?
         elif len(matches) != 0 and return_candidate is None:
             return_candidate = choice(matches)
             return_candidate_n = ngram_size
@@ -282,7 +280,6 @@ def get_next_word(subsets_of_ngrams, previous_words, syllables_left, last_used_g
         return return_candidate, return_candidate_n
     return None, None
 
-# TODO: run profiler and optimize
 #possible to optimize by looking at 2 characters
 def get_matches(ngrams, previous_words, syllables_left):
     ngram_size = len(ngrams[0])  # gram size

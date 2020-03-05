@@ -10,12 +10,21 @@ body {
     background-repeat: no-repeat;
     background-position: left center;
     background-size: auto 100%;
+    background-attachment: fixed;
 }
-#source_link {
+@media screen and (max-width: 1100px) {
+    body {
+        background-image: url("/front/background-mobile.png");
+    }
+}
+#corner_links {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 14px;
+    font-size: 24px;
+}
+#corner_links a {
+    margin-left: 10px;
 }
 h1 {
     font-size: 34px;
@@ -24,10 +33,20 @@ h1 {
     font-family: Georgia, Times, serif;
 }
 #frame {
-    width: 85%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 70px;
+}
+@media screen and (max-width: 1100px) {
+    #frame {
+        width: 85%;
+    }
+}
+@media screen and (max-width: 900px) {
+    #frame {
+        width: 95%;
+    }
 }
 input[type="text"], button {
     font-size: 16px;
@@ -46,7 +65,26 @@ input[type="text"], button {
     width: 32%;
     display: inline-block;
 }
+@media screen and (max-width: 900px) {
+    .haiku {
+        width: 45%;
+    }
+}
 .haiku p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.best_haiku {
+    width: 34%;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+@media screen and (max-width: 900px) {
+    .best_haiku {
+        width: 45%;
+    }
+}
+.best_haiku p {
     margin-top: 20px;
     margin-bottom: 20px;
 }
