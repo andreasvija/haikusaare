@@ -23,6 +23,15 @@ body {
     right: 15px;
     font-size: 24px;
 }
+@media screen and (max-width: 1100px) {
+    #corner_links {
+        font-size: 20px;
+    }
+}@media screen and (max-width: 900px) {
+    #corner_links {
+        font-size: 16px;
+    }
+}
 #corner_links a {
     margin-left: 10px;
 }
@@ -61,13 +70,27 @@ input[type="text"], button {
     font-size: 24px;
     font-family: Georgia, Times, serif;
 }
+@media screen and (max-width: 900px) {
+    #frame {
+        margin-top: 50px;
+    }
+    #haikus {
+        margin-top: 40px;
+    }
+}
 .haiku {
     width: 32%;
     display: inline-block;
+    margin-bottom: 40px;
 }
 @media screen and (max-width: 900px) {
     .haiku {
         width: 45%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .haiku {
+        width: 75%;
     }
 }
 .haiku p {
