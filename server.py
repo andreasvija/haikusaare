@@ -3,6 +3,7 @@
 from flask import Flask, request, abort, send_from_directory, render_template_string
 from haikusaare import Haikusaare
 from os.path import isfile
+#from requests import post
 
 app = Flask(__name__)
 generator = Haikusaare()
@@ -46,6 +47,19 @@ def get_haiku():
         return generator.generate_haiku(request.args['insp'])
     else:
         return generator.generate_haiku('')
+
+#def request_haiku_sound(text):
+#    url = 'https://neurokone.cloud.ut.ee/api/v1.0/synthesize'
+#    json = {'text': text, 'speaker_id': 7}
+#    post_request = post(url, json=json)
+#    return post_request.content
+
+#@app.route('/haikusaare/sound')
+#def get_haiku_sound():
+#    if 'text' in request.args:
+#        return request_haiku_sound(request.args['text'])
+#    else:
+#        return "Faulty request."
 
 if __name__ == '__main__':
     app.run(host=hostname)

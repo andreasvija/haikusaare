@@ -116,3 +116,9 @@ input[type="text"], button {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.haiku img {
+    margin-top: 20px;
+    width: 25px;
+    cursor: pointer;
+    display: none; /* hide non-existent functionality */
+}
